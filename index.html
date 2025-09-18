@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>La Típica Familia - Dobladitas de Chiquimula</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            /* Colores inspirados en textiles y naturaleza guatemalteca vibrante */
+            --color-principal-azul: #0077B6; /* Azul cielo/profundo, como los lagos */
+            --color-secundario-naranja: #FF7F00; /* Naranja vibrante, como frutas tropicales */
+            --color-acento-verde: #4CAF50; /* Verde brillante, como la vegetación exuberante */
+            --color-acento-morado: #9C27B0; /* Morado intenso, flor de loroco */
+            --color-acento-amarillo: #FFD54F; /* Amarillo maíz o sol */
+            --color-fondo-claro: #E0F2F7; /* Fondo muy suave, casi blanco azulado */
+            --color-texto-oscuro: #212121;
+            --color-texto-claro: #FFFFFF;
+            --color-sombra: rgba(0, 0, 0, 0.15);
+        }
+
+        body {
+            font-family: 'Roboto', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: var(--color-fondo-claro);
+            color: var(--color-texto-oscuro);
+            line-height: 1.7;
+            overflow-x: hidden;
+            scroll-behavior: smooth;
+        }
+
+        /* Efecto de fondo con patrón más colorido y vibrante */
+        .maya-pattern-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="120" height="120" viewBox="0 0 120 120"><rect width="120" height="120" fill="%23E0F2F7"/><path d="M0 60 L60 0 L120 60 L60 120 Z" fill="%23FF7F00" fill-opacity="0.1"/><path d="M30 60 L60 30 L90 60 L60 90 Z" fill="%230077B6" fill-opacity="0.1"/><path d="M45 60 L60 45 L75 60 L60 75 Z" fill="%239C27B0" fill-opacity="0.08"/></svg>');
+            background-repeat: repeat;
+            z-index: -1;
+        }
+
+        /* Contenedor principal y espaciado */
+        .container {
+            width: 90%;
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 4rem 0;
+        }
+
+        /* Estilo para todas las secciones */
+        .section {
+            background-color: var(--color-texto-claro); /* Fondo blanco vibrante */
+            padding: 3rem;
+            margin-bottom: 3rem;
+            border-radius: 12px;
+            box-shadow: 0 10px 25px var(--color-sombra); /* Sombra más pronunciada */
+            position: relative;
+            z-index: 1;
+            border-left: 8px solid var(--color-principal-azul); /* Borde lateral de color */
+        }
+
+        /* Encabezados y títulos */
+        h1, h2, h3 {
+            font-family: 'Playfair Display', serif;
+            text-align: center;
+            margin-bottom: 1.5rem;
+        }
+
+        h1 {
+            font-size: 4.5rem; /* Más grande y audaz */
+            color: var(--color-principal-azul); /* Azul como principal */
+            text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.2);
+            line-height: 1.1;
+        }
+
+        h2 {
+            font-size: 3rem; /* Más grande y llamativo */
+            color: var(--color-secundario-naranja); /* Naranja vibrante para sub-títulos */
+            position: relative;
+            padding-bottom: 1rem;
+        }
+
+        h2::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px; /* Más ancho */
+            height: 5px; /* Más grueso */
+            background-color: var(--color-acento-verde); /* Verde vibrante */
+            border-radius: 3px;
+        }
+
+        h3 {
+            font-size: 2rem;
+            color: var(--color-principal-azul);
+            margin-bottom: 1rem;
+        }
+
+        p {
+            font-size: 1.15rem; /* Texto un poco más grande */
+            text-align: justify;
+            color: var(--color-texto-oscuro);
+        }
+
+        /* Header (sección inicial) */
+        header {
+            background: linear-gradient(135deg, var(--color-principal-azul) 0%, var(--color-acento-morado) 100%); /* Degradado vibrante */
+            padding: 8rem 0;
+            text-align: center;
+            color: var(--color-texto-claro);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .header-slogan {
+            font-size: 1.8rem; /* Slogan más prominente */
+            font-weight: 700;
+            color: var(--color-acento-amarillo); /* Amarillo brillante */
+            margin-top: -1rem;
+            margin-bottom: 2.5rem;
+            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3);
+        }
+
+        header p {
+            color: var(--color-texto-claro);
+            max-width: 800px;
+            margin: 0 auto 3rem auto;
+            font-size: 1.25rem;
+        }
+
+        /* Botones y enlaces */
+        .cta-button {
+            background-color: var(--color-acento-verde); /* Botón de acción principal verde */
+            color: var(--color-texto-claro);
+            padding: 1.2rem 3rem; /* Más grande */
+            font-size: 1.25rem; /* Texto más grande */
+            border-radius: 60px; /* Más redondeado */
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.25); /* Sombra más intensa */
+        }
+
+        .cta-button:hover {
+            transform: translateY(-7px); /* Más movimiento */
+            background-color: var(--color-secundario-naranja); /* Cambio de color al hacer hover */
+        }
+
+        /* Listas y detalles del menú */
+        .menu-list {
+            list-style: none;
+            padding: 0;
+            margin-top: 2.5rem;
+        }
+
+        .menu-item {
+            background-color: var(--color-fondo-claro); /* Fondo claro para los ítems */
+            border-left: 6px solid var(--color-secundario-naranja); /* Borde de color secundario */
+            padding: 2rem;
+            margin-bottom: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+        }
+        
+        .menu-item:hover {
+            transform: scale(1.03) rotate(1deg); /* Más dinámico, ligera rotación */
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+        }
+
+        .menu-item h3 {
+            margin: 0 0 0.8rem 0;
+            color: var(--color-principal-azul);
+            font-size: 1.8rem;
+            text-align: left;
+        }
+        
+        .menu-item p {
+            margin: 0;
+            text-align: left;
+            font-size: 1.05rem;
+            color: var(--color-texto-oscuro);
+        }
+
+        /* Sección de testimonios */
+        .testimonial {
+            background-color: var(--color-fondo-claro);
+            font-style: italic;
+            border-left: 6px solid var(--color-acento-morado); /* Borde morado para testimonios */
+            padding: 1.5rem 2rem;
+            margin-bottom: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+        }
+
+        .testimonial-author {
+            font-style: normal;
+            font-weight: bold;
+            color: var(--color-principal-azul); /* Autor en color principal */
+            margin-top: 0.8rem;
+            display: block;
+            font-size: 1.1rem;
+        }
+
+        /* Formulario de contacto */
+        .form-container {
+            max-width: 650px; /* Un poco más ancho */
+            margin: 0 auto;
+        }
+
+        .form-container input, .form-container textarea {
+            width: 100%;
+            padding: 1.2rem; /* Más grande */
+            margin-bottom: 1.8rem; /* Más espacio */
+            border: 2px solid var(--color-acento-amarillo); /* Borde amarillo para resaltar */
+            border-radius: 10px;
+            font-size: 1.05rem;
+            box-sizing: border-box;
+            background-color: var(--color-fondo-claro);
+        }
+
+        .form-container input:focus, .form-container textarea:focus {
+            border-color: var(--color-principal-azul); /* Borde azul al enfocar */
+            outline: none;
+            box-shadow: 0 0 0 4px rgba(0, 119, 182, 0.3);
+        }
+
+        .form-container button {
+            background-color: var(--color-principal-azul); /* Botón de enviar principal azul */
+            color: var(--color-texto-claro);
+            padding: 1.3rem 3rem; /* Más grande */
+            border-radius: 60px;
+            font-size: 1.3rem;
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.25);
+        }
+
+        .form-container button:hover {
+            background-color: var(--color-acento-verde); /* Cambio de color al hacer hover */
+            transform: translateY(-5px);
+        }
+
+        /* Pie de página */
+        footer {
+            background-color: var(--color-principal-azul); /* Fondo azul principal */
+            color: var(--color-texto-claro);
+            text-align: center;
+            padding: 3.5rem 0;
+            margin-top: 4rem;
+            font-size: 1rem;
+            box-shadow: 0 -5px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        footer p {
+            color: var(--color-texto-claro);
+            margin: 0.6rem 0;
+        }
+        
+        /* Líneas divisorias */
+        .divider {
+            height: 2px; /* Más grueso */
+            background: linear-gradient(to right, var(--color-acento-verde), var(--color-secundario-naranja), var(--color-acento-morado)); /* Degradado vibrante */
+            margin: 3rem auto;
+            width: 60%;
+            border-radius: 1px;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            h1 { font-size: 3rem; }
+            h2 { font-size: 2.2rem; }
+            h3 { font-size: 1.6rem; }
+            .section { padding: 1.8rem; }
+            .cta-button { font-size: 1.1rem; padding: 1rem 2.5rem; }
+            header { padding: 6rem 0; }
+            .header-slogan { font-size: 1.4rem; }
+            header p { font-size: 1.1rem; }
+            .menu-item, .testimonial { padding: 1.2rem 1.5rem; }
+            .form-container input, .form-container textarea { padding: 1rem; }
+            .form-container button { font-size: 1.1rem; padding: 1rem 2.5rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="maya-pattern-bg"></div>
+
+    <header>
+        <img src="logo.jpg" alt="logo final" style="height: 300px; width: 450px;">
+        <h1>LA TÍPICA FAMILIA</h1>
+        <p class="header-slogan">El Sabor Vibrante de Chiquimula en Cada Dobladita</p>
+        <p>Prepárate para una explosión de sabor que te transportará directamente a los mercados coloridos y la calidez de los hogares guatemaltecos. En "La Típica Familia", cada doblada es una celebración de nuestra herencia, con el toque inconfundible del loroco y el queso que nos hace únicos. ¡Una experiencia culinaria que despierta los sentidos!</p>
+        <a href="#menu" class="cta-button">¡Descubre Nuestros Sabores!</a>
+    </header>
+
+    <main class="container">
+        <section class="section" id="nosotros">
+            <h2>Nuestra Esencia: Un Legado de Alegría</h2>
+            <p>Nacimos en el corazón palpitante de Chiquimula, con la misión de compartir no solo un platillo, sino una parte de nuestra alma. "La Típica Familia" es el sueño de generaciones que han cultivado el arte de las dobladas, transmitiendo de boca en boca el secreto de su perfección. Valoramos el comercio justo y apoyamos a nuestros agricultores locales, quienes con sus manos nos proveen el maíz, el loroco y el queso más fresco. Cada ingrediente es un lienzo, y cada doblada, una obra de arte culinaria que refleja la riqueza de Guatemala. Ven y siente la chispa de nuestra historia, donde la tradición y la innovación se encuentran para deleitarte.</p>
+            <img src="https://www.aceiteideal.com/wp-content/uploads/2020/08/PORTADA-dobladas--2000x1200.png" height="300px" width="500px">
+        </section>
+        
+        <div class="divider"></div>
+
+        <section class="section" id="menu">
+            <h2>El Festival de Nuestras Dobladitas de Loroco con Queso</h2>
+            <p>Sumérgete en el sabor inconfundible de nuestras especialidades. Nuestro ingrediente estrella, el loroco —esa exótica y aromática flor tan querida en Centroamérica— se fusiona armoniosamente con el cremoso queso artesanal. Cada doblada es una invitación a explorar una sinfonía de texturas y aromas que te harán vibrar de emoción. Prepárate para una experiencia auténticamente guatemalteca, llena de color y alegría en cada bocado.</p>
+            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT5bNbP1iNtsGydRMJb2JFn3DVDIJq9MDg0zIw51uCMf8tEE59yuDQXTRJaYDsEP3bE2oM&usqp=CAU" height="300px" width="500px">
+            <ul class="menu-list">
+                <li class="menu-item">
+                    <h3>Dobladitas Clásicas de Loroco y Queso</h3>
+                    <p>La perfección hecha doblada. Tortillas de maíz doradas y crujientes, rellenas generosamente con queso derretido y las inconfundibles flores de loroco. Un equilibrio sublime de sabor y aroma que te conquistará desde el primer bocado. Servidas con nuestra salsa casera especial y curtido fresco.</p>
+                </li>
+                <li class="menu-item">
+                    <h3>Dobladitas Picantes: Loroco, Queso y Chirmol de la Casa</h3>
+                    <p>Para los amantes de las emociones fuertes. Nuestra doblada clásica, realzada con un vibrante chirmol de tomate asado y chiles locales, que añade un toque picante y un aroma ahumado. ¡Una explosión de sabor que no te dejará indiferente!</p>
+                </li>
+                <li class="menu-item">
+                    <h3>Plato Fiesta: Degustación de Loroco y Queso</h3>
+                    <p>¿No puedes decidirte? Prueba nuestra selección de mini-dobladitas con diferentes acompañamientos: salsa verde picante, crema agria fresca y aguacate. Ideal para compartir y experimentar toda la riqueza del loroco y el queso en sus variaciones.</p>
+                </li>
+            </ul>
+            <a href="#contacto" class="cta-button">¡Pide tus Favoritas Hoy!</a>
+        </section>
+        
+        <div class="divider"></div>
+
+        <section class="section" id="testimonios">
+            <h2>Voces que Celebran Nuestro Sabor</h2>
+            <p>Nuestros clientes son el corazón de "La Típica Familia". Sus palabras nos impulsan a seguir compartiendo la alegría y el sabor auténtico de nuestras dobladas.</p>
+            <div class="testimonial">
+                <p>"¡Increíbles dobladas! El sabor del loroco con el queso es simplemente mágico. El azul de la página me recordó el cielo de Atitlán. ¡Una joya en Chiquimula!"</p>
+                <span class="testimonial-author">— Ana Lucía G., Chiquimula</span>
+            </div>
+            <div class="testimonial">
+                <p>"La presentación, el sabor, la calidez del ambiente... todo es perfecto. Me encantó el toque morado en el diseño, como las flores de loroco. ¡Me sentí en casa con cada bocado!"</p>
+                <span class="testimonial-author">— Pedro X., Entusiasta de la Gastronomía</span>
+            </div>
+            <div class="testimonial">
+                <p>"Un verdadero festín para el paladar. Las dobladas picantes son adictivas. La página web es tan vibrante como sus sabores. ¡100% recomendado!"</p>
+                <span class="testimonial-author">— Sofía M., Visitante</span>
+            </div>
+        </section>
+        
+        <div class="divider"></div>
+
+        <section class="section" id="contacto">
+            <h2>Conéctate con el Corazón de Chiquimula</h2>
+            <p>¿Listo para sumergirte en la experiencia de "La Típica Familia"? Ya sea para un pedido especial, catering para eventos o simplemente para saludar, estamos aquí para ti. Escríbenos y déjanos compartir contigo el sabor que te hará sonreír.</p>
+            <div class="form-container">
+                <form action="#" method="POST">
+                    <input type="text" name="nombre" placeholder="Tu Nombre Completo" required>
+                    <input type="email" name="email" placeholder="Correo Electrónico" required>
+                    <input type="tel" name="telefono" placeholder="Número de Teléfono (opcional)">
+                    <textarea name="mensaje" rows="7" placeholder="¡Cuéntanos qué delicia deseas o tu consulta!" required></textarea>
+                    <button type="submit">¡Enviar Alegría!</button>
+                </form>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2025 La Típica Familia. Sabores que Unen.</p>
+        <p>Orgullosamente desde Chiquimula, Guatemala.</p>
+        <p>Contáctanos: <a href="mailto:info@latipicafamilia.com" style="color: var(--color-acento-amarillo); text-decoration: none;">info@latipicafamilia.com</a> | Tel: +502 1234-5678</p>
+        <p>Síguenos en nuestras redes sociales para más color y sabor.</p>
+    </footer>
+
+</body>
+</html>
